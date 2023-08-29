@@ -15,26 +15,71 @@ export class UserDataManager {
 
   constructor() {
     let data;
-    const storedUserData = localStorage.getItem("userData");
-    if (storedUserData) {
-      data = JSON.parse(storedUserData) as UserSaveData;
+
+    if (this.isLocalStorageAvailable()) {
+      const storedUserData = localStorage.getItem("userData");
+      if (storedUserData) {
+        data = JSON.parse(storedUserData) as UserSaveData;
+      } else {
+        data = { completedLevels: [], perfectLevels: [] };
+        localStorage.setItem("userData", JSON.stringify(data));
+      }
     } else {
+      console.log(
+        "localStorage is not available! Progress will be lost once the game is closed."
+      );
       data = { completedLevels: [], perfectLevels: [] };
     }
+
     this.userData = data;
   }
 
   saveUserData(data: UserSaveData) {
-    localStorage.setItem("userData", JSON.stringify(data));
+    if (this.isLocalStorageAvailable()) {
+      localStorage.setItem("userData", JSON.stringify(data));
+    } else {
+      console.log(
+        "localStorage is not available! Progress will be lost once the game is closed."
+      );
+    }
+
     this.userData = data;
   }
 
   getUserData() {
-    const data = localStorage.getItem("userData");
-    if (data !== undefined) {
+    if (this.isLocalStorageAvailable()) {
+      const data = localStorage.getItem("userData");
       return JSON.parse(data as string) as UserSaveData;
     } else {
+      console.log("localStorage is not available.");
       return this.userData;
+    }
+  }
+
+  isLocalStorageAvailable() {
+    let storage;
+    try {
+      storage = window["localStorage"];
+      const x = "__storage_test__";
+      storage.setItem(x, x);
+      storage.removeItem(x);
+      return true;
+    } catch (e) {
+      return (
+        e instanceof DOMException &&
+        // everything except Firefox
+        (e.code === 22 ||
+          // Firefox
+          e.code === 1014 ||
+          // test name field too, because code might not be present
+          // everything except Firefox
+          e.name === "QuotaExceededError" ||
+          // Firefox
+          e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+        // acknowledge QuotaExceededError only if there's something already stored
+        storage &&
+        storage.length !== 0
+      );
     }
   }
 }
