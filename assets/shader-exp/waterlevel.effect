@@ -1,0 +1,119 @@
+// Copyright (c) 2017-2020 Xiamen Yaji Software Co., Ltd.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: sprite-vs:vert
+      frag: sprite-fs:frag
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      properties:
+        color1: { value: [1.0, 1.0, 1.0, 1.0], editor: {type: color} }
+        color1Percentage: {value: 0.20  }
+
+        color2: { value: [1.0, 1.0, 1.0, 1.0], editor: {type: color} }
+        color2Percentage: {value: 0.20}
+
+        color3: { value: [1.0, 1.0, 1.0, 1.0], editor: {type: color} }
+        color3Percentage: {value: 0.20}
+
+        color4: { value: [1.0, 1.0, 1.0, 1.0], editor: {type: color} }
+        color4Percentage: {value: 0.20}
+
+}%
+
+CCProgram sprite-vs %{
+  precision highp float;
+  #include <cc-global>
+  #if USE_LOCAL
+    #include <cc-local>
+  #endif
+  #if SAMPLE_FROM_RT
+    #include <common>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+
+  out vec4 color;
+  out vec4 pos;
+  out vec2 uv0;
+
+  vec4 vert () {
+    uv0 = a_texCoord;
+    pos = vec4(a_position, 1.);
+    pos = cc_matViewProj * pos;
+
+    color = a_color;
+
+    return pos;
+  }
+}%
+
+CCProgram sprite-fs %{
+  precision highp float;
+  #include <embedded-alpha>
+  #include <alpha-test>
+
+  in vec4 color;
+
+  uniform Constant{
+    vec4 color1;
+    vec4 color2;
+    vec4 color3;
+    vec4 color4;
+
+    float color1Percentage;
+    float color2Percentage;
+    float color3Percentage;
+    float color4Percentage;
+  };
+
+  in vec2 uv0;
+  #pragma builtin(local)
+  layout(set = 2, binding = 11) uniform sampler2D cc_spriteTexture;
+
+  vec4 frag () {
+    vec4 o = vec4(1, 1, 1, 1);
+
+    float invertedUV = abs(1.0 - uv0.y);
+
+// ex
+// 1 = 0.5
+//2 = 0.25
+//3 = 0.25
+///4 = 0
+// 1 range = 0-0.5;
+// 2 range = 0.5 + 0.5+0.25 = 0.75
+    float color2Total = color1Percentage + color2Percentage;
+    float color3Total = color2Total + color3Percentage;
+    float color4Total = color3Total + color4Percentage;
+
+    o *= CCSampleWithAlphaSeparated(cc_spriteTexture, uv0);
+
+    if(invertedUV <= color1Percentage){
+      o = color1;
+    } else if (invertedUV > color1Percentage && invertedUV <=color2Total){
+      o = color2;
+    } else if (invertedUV > color2Total && invertedUV <= color3Total){
+      o = color3;
+    } else if(invertedUV > color3Total && invertedUV <= color4Total){
+      o = color4;
+    }else if (invertedUV > color4Total){
+      o.a = 0.0;
+    }
+  
+
+    ALPHA_TEST(o);
+    return o;
+  }
+}%

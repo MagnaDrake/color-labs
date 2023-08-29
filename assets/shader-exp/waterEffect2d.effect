@@ -1,0 +1,122 @@
+// Effect Syntax Guide: https://github.com/cocos-creator/docs-3d/blob/master/zh/material-system/effect-syntax.md
+
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: vs:vert
+      frag: fs:frag
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: one
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      properties:
+        fadeCenter: { value: [0.5, 0.5], target: _fadeCenter.xy }
+        tex: { value: white }
+        fuel: { value: 25. }
+}%
+
+CCProgram vs %{
+  precision mediump float;
+
+  #include <cc-global>
+
+  in vec3 a_position;
+
+  in vec4 a_color;
+  out vec4 v_color;
+
+  in vec2 a_texCoord;
+
+  out vec4 pos;
+  out vec2 uv0;
+
+  vec4 vert () {
+    uv0 = a_texCoord;
+    pos = vec4(a_position, 1.);
+    pos = cc_matViewProj * pos;
+
+    v_color = a_color;
+
+    return pos;
+  }
+}%
+
+CCProgram fs %{
+  precision mediump float;
+
+  #include <cc-global>
+  #include <embedded-alpha>
+  #include <alpha-test>
+
+  #pragma builtin(local)
+    layout(set = 2, binding = 11) uniform sampler2D cc_spriteTexture;
+  uniform sampler2D mainTexture;
+
+  in vec4 v_color;
+  in vec4 pos;
+  in vec2 uv0;
+
+  uniform sampler2D tex;
+  uniform Constants {
+    vec2 _fadeCenter;
+    float fuel;
+  };
+
+  vec2 randV2(vec2 value) {
+    float dotProduct = dot(value.x, value.y);
+    return vec2(fract(sin(dotProduct * 253.24) * 241.2), fract(sin(dotProduct * 612.11) * 511.66));
+  }
+
+  float rand(float value) {
+    return fract(sin(value * 234.24) * 241.2);
+  }
+
+  float when_lt(float x, float y) {
+    return max(sign(y - x), 0.0);
+  }
+
+  float when_gt(float x, float y) {
+    return max(sign(x - y), 0.0);
+  }
+
+  float when_le(float x, float y) {
+    return 1.0 - when_gt(x, y);
+  }
+
+  float when_eq(float x, float y) {
+  return 1.0 - abs(sign(x - y));
+}
+
+  vec4 frag () {
+    vec4 o = vec4(1.0);
+    vec4 white = vec4(1.0);
+    vec4 bgBlue = vec4(0.022, 0.255, 0.623, 0.0);
+
+    float time = cc_time.x;
+
+    o *= v_color;
+
+    vec2 st = uv0 * 5. + time * 2.;
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+
+    float testFuel = cc_time.x * 0.1;
+    float fuelPCT = (1.0 - fuel / 100.) - 0.05;
+    float smoothWave = mix(rand(i.x), rand(i.x + 1.), smoothstep(0., 1., f.x)) + time * 2.;
+    float r = sin(smoothWave * 1.0) / 3.1415 * 0.1;
+    o.a *= when_gt(uv0.y, r + fuelPCT);
+    o = mix(white, o, smoothstep(fuelPCT, fuelPCT + 0.01, distance(r, uv0.y))) * o.a;
+    o = bgBlue * step(r + fuelPCT - 0.01, uv0.y) * when_le(uv0.y, r + fuelPCT) + o * when_gt(uv0.y, r + fuelPCT);
+    o *= CCSampleWithAlphaSeparated(tex, uv0);
+
+    return o;
+  }
+}%
