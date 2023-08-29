@@ -18,17 +18,17 @@
         "__id__": 2
       },
       {
-        "__id__": 147
+        "__id__": 144
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 158
+      "__id__": 155
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 161
+      "__id__": 158
     },
     "_id": "d583ac33-20e7-449c-aff5-ace310cf425b"
   },
@@ -62,7 +62,7 @@
         "__id__": 33
       },
       {
-        "__id__": 134
+        "__id__": 131
       },
       {
         "__id__": 110
@@ -74,13 +74,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 144
+        "__id__": 141
       },
       {
-        "__id__": 145
+        "__id__": 142
       },
       {
-        "__id__": 146
+        "__id__": 143
       }
     ],
     "_prefab": null,
@@ -525,7 +525,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -900,
+      "y": 900,
       "z": 0
     },
     "_lrot": {
@@ -692,13 +692,13 @@
         "__id__": 24
       },
       {
-        "__id__": 130
+        "__id__": 127
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 133
+        "__id__": 130
       }
     ],
     "_prefab": null,
@@ -754,7 +754,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 310,
+      "y": 290,
       "z": 0
     },
     "_lrot": {
@@ -823,8 +823,8 @@
     "_string": "Level Select",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 160,
-    "_fontSize": 160,
+    "_actualFontSize": 125,
+    "_fontSize": 125,
     "_fontFamily": "",
     "_lineHeight": 80,
     "_overflow": 1,
@@ -888,8 +888,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": -280,
+      "x": -488,
+      "y": 306,
       "z": 0
     },
     "_lrot": {
@@ -901,8 +901,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 0.75,
-      "y": 0.75,
+      "x": 0.5,
+      "y": 0.5,
       "z": 1
     },
     "_layer": 33554432,
@@ -3221,7 +3221,7 @@
         "__id__": 100
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 109
@@ -3231,7 +3231,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": 900,
       "z": 0
     },
     "_lrot": {
@@ -3336,7 +3336,7 @@
     "_enabled": true,
     "__prefab": null,
     "_lineHeight": 40,
-    "_string": "\n\nThis game was made as an entry for <on click=\"onClickPhaseJam\"><color=#FFF699>Unofficial PhaseJam #2</on></color>\n\nJelly Hoshiumi is part of the<color=#FFF699> <on click = \"onClickPhaseConnect\">Phase-Connect </on></color>agency.\nYouTube: <color=#FFF699><on click= \"onClickJellyYT\">@JellyHoshiumi</color></on>\nTwitter: <color=#FFF699><on click=\"onClickJellyTwt>@jellyhoshiumi</on></color>\n\nDeveloped and produced by a group of three besties\nProgramming: <on click=\"onClickMagna\"><color=#FFF699>@MagnaDrake_</on></color>\nGraphics: <color=#FFF699><on click=\"onClickPeppy\">@mira_peppy</on></color>\nMusic and Sound: <color=#FFF699><on click=\"onClickLiosphe\">@liosphe</on></color>\n\nCertain sound effects were procured from <color=#FFF699><on click = \"onClickFreesound\">freesound.org</on></color>\n\nThank YOU for playing!\n",
+    "_string": "\n\nThis game was made as an entry for <on click=\"onClickPhaseJam\"><color=#FFF699>Unofficial PhaseJam #2</on></color>\n\nJelly Hoshiumi is part of the<color=#FFF699> <on click = \"onClickPhaseConnect\">Phase-Connect </on></color>agency\nYouTube: <color=#FFF699><on click= \"onClickJellyYT\">@JellyHoshiumi</color></on>\nTwitter: <color=#FFF699><on click=\"onClickJellyTwt\">@jellyhoshiumi</on></color>\n\nDeveloped and produced by a group of three besties\nProgramming: <on click=\"onClickMagna\"><color=#FFF699>@MagnaDrake_</on></color>\nGraphics: <color=#FFF699><on click=\"onClickPeppy\">@mira_peppy</on></color>\nMusic and Sound: <color=#FFF699><on click=\"onClickLiosphe\">@liosphe</on></color>\n\nCertain sound effects were procured from <color=#FFF699><on click = \"onClickFreesound\">freesound.org</on></color>\n\nThank YOU for playing!\n",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
     "_fontSize": 40,
@@ -3503,8 +3503,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 488,
-      "y": -306,
+      "x": -488,
+      "y": 306,
       "z": 0
     },
     "_lrot": {
@@ -3819,22 +3819,19 @@
       },
       {
         "__id__": 117
-      },
-      {
-        "__id__": 120
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
-        "__id__": 129
+        "__id__": 126
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": -900,
       "z": 0
     },
     "_lrot": {
@@ -3861,7 +3858,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "BG",
+    "_name": "Label",
     "_objFlags": 0,
     "_parent": {
       "__id__": 110
@@ -3874,112 +3871,6 @@
       },
       {
         "__id__": 113
-      }
-    ],
-    "_prefab": null,
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_layer": 33554432,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": "2bIN8OL3lIE4s9C0jJJ44b"
-  },
-  {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 111
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 1280,
-      "height": 720
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "b5E1u1yy5GX4mDjIEgFKpg"
-  },
-  {
-    "__type__": "cc.Sprite",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 111
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_visFlags": 0,
-    "_customMaterial": null,
-    "_srcBlendFactor": 2,
-    "_dstBlendFactor": 4,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_spriteFrame": {
-      "__uuid__": "3bae93a6-70d1-417d-88ee-86428bc27af1@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
-    "_type": 0,
-    "_fillType": 0,
-    "_sizeMode": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_useGrayscale": false,
-    "_atlas": null,
-    "_id": "d4Uf+JpUdEKZ9umGWKBzwr"
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "Label",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 110
-    },
-    "_children": [],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 115
-      },
-      {
-        "__id__": 116
       }
     ],
     "_prefab": null,
@@ -4016,7 +3907,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 114
+      "__id__": 111
     },
     "_enabled": true,
     "__prefab": null,
@@ -4037,7 +3928,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 114
+      "__id__": 111
     },
     "_enabled": true,
     "__prefab": null,
@@ -4052,7 +3943,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "1. Tap any test tube to select it, and then tap a different tube. This will transfer the topmost layer of liquid from the selected tube into the target tube.\n\n2. Keep in mind that liquids can only be transferred into either a completely empty tube, or a tube with liquid of the same color on the top. \nLiquid of different colors cannot be mixed!\n\n3. The level is cleared when each tube is filled with a single color. \nThere might be one or two test tubes left empty, that's okay.\n\n4.Strive to solve the levels in as little moves as possible! \n Beating our personal record within a level will mark the level with a star.",
+    "_string": "1. Tap any test tube to select it, and then tap a different tube. This will transfer the topmost layer of liquid from the selected tube into the target tube.\n\n2. Keep in mind that liquids can only be transferred into either a completely empty tube, or a tube with liquid of the same color on the top. \nLiquid of different colors cannot be mixed!\n\n3. The level is cleared when each tube is filled with a single color. \nThere might be one or two test tubes left empty, that's okay.\n\n4. Strive to solve the levels in as little moves as possible! \nBeating our personal record within a level will mark the level with a star.",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
     "_actualFontSize": 35,
@@ -4085,10 +3976,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 118
+        "__id__": 115
       },
       {
-        "__id__": 119
+        "__id__": 116
       }
     ],
     "_prefab": null,
@@ -4125,7 +4016,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 117
+      "__id__": 114
     },
     "_enabled": true,
     "__prefab": null,
@@ -4146,7 +4037,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 117
+      "__id__": 114
     },
     "_enabled": true,
     "__prefab": null,
@@ -4192,26 +4083,26 @@
     },
     "_children": [
       {
-        "__id__": 121
+        "__id__": 118
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 125
+        "__id__": 122
       },
       {
-        "__id__": 126
+        "__id__": 123
       },
       {
-        "__id__": 127
+        "__id__": 124
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 488,
-      "y": -306,
+      "x": -488,
+      "y": 306,
       "z": 0
     },
     "_lrot": {
@@ -4241,19 +4132,19 @@
     "_name": "Label",
     "_objFlags": 512,
     "_parent": {
-      "__id__": 120
+      "__id__": 117
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 122
+        "__id__": 119
       },
       {
-        "__id__": 123
+        "__id__": 120
       },
       {
-        "__id__": 124
+        "__id__": 121
       }
     ],
     "_prefab": null,
@@ -4290,7 +4181,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 121
+      "__id__": 118
     },
     "_enabled": true,
     "__prefab": null,
@@ -4311,7 +4202,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 121
+      "__id__": 118
     },
     "_enabled": true,
     "__prefab": null,
@@ -4353,7 +4244,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 121
+      "__id__": 118
     },
     "_enabled": false,
     "__prefab": null,
@@ -4372,7 +4263,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 120
+      "__id__": 117
     },
     "_enabled": true,
     "__prefab": null,
@@ -4393,7 +4284,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 120
+      "__id__": 117
     },
     "_enabled": true,
     "__prefab": null,
@@ -4429,13 +4320,13 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 120
+      "__id__": 117
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 128
+        "__id__": 125
       }
     ],
     "_interactable": true,
@@ -4475,7 +4366,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.2,
     "_target": {
-      "__id__": 120
+      "__id__": 117
     },
     "_id": "6cxHWHcaVGW7apyoZL/JXw"
   },
@@ -4521,10 +4412,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 131
+        "__id__": 128
       },
       {
-        "__id__": 132
+        "__id__": 129
       }
     ],
     "_prefab": null,
@@ -4561,7 +4452,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 130
+      "__id__": 127
     },
     "_enabled": true,
     "__prefab": null,
@@ -4582,7 +4473,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 130
+      "__id__": 127
     },
     "_enabled": true,
     "__prefab": null,
@@ -4596,7 +4487,7 @@
     "_startAxis": 0,
     "_paddingLeft": 0,
     "_paddingRight": 0,
-    "_paddingTop": 20,
+    "_paddingTop": 40,
     "_paddingBottom": 20,
     "_spacingX": 0,
     "_spacingY": 0,
@@ -4618,7 +4509,7 @@
     "_enabled": true,
     "__prefab": null,
     "levelsContainer": {
-      "__id__": 130
+      "__id__": 127
     },
     "levelItem": {
       "__uuid__": "c4a606cc-3886-4051-a05b-edddff06326b",
@@ -4636,13 +4527,13 @@
       "__id__": 2
     },
     "_prefab": {
-      "__id__": 135
+      "__id__": 132
     }
   },
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 134
+      "__id__": 131
     },
     "asset": {
       "__uuid__": "c90e11cc-800b-46ee-a7d8-a16f93026bce",
@@ -4650,7 +4541,7 @@
     },
     "fileId": "69rjEab+5D6KiSoiaAgio/",
     "instance": {
-      "__id__": 136
+      "__id__": 133
     }
   },
   {
@@ -4660,19 +4551,19 @@
     "mountedComponents": [],
     "propertyOverrides": [
       {
+        "__id__": 134
+      },
+      {
+        "__id__": 136
+      },
+      {
         "__id__": 137
       },
       {
+        "__id__": 138
+      },
+      {
         "__id__": 139
-      },
-      {
-        "__id__": 140
-      },
-      {
-        "__id__": 141
-      },
-      {
-        "__id__": 142
       }
     ],
     "removedComponents": []
@@ -4680,7 +4571,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 138
+      "__id__": 135
     },
     "propertyPath": [
       "_name"
@@ -4696,7 +4587,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 138
+      "__id__": 135
     },
     "propertyPath": [
       "_lpos"
@@ -4711,7 +4602,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 138
+      "__id__": 135
     },
     "propertyPath": [
       "_lrot"
@@ -4727,7 +4618,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 138
+      "__id__": 135
     },
     "propertyPath": [
       "_euler"
@@ -4742,7 +4633,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 143
+      "__id__": 140
     },
     "propertyPath": [
       "_opacity"
@@ -4831,6 +4722,15 @@
     "_active": true,
     "_components": [
       {
+        "__id__": 145
+      },
+      {
+        "__id__": 146
+      },
+      {
+        "__id__": 147
+      },
+      {
         "__id__": 148
       },
       {
@@ -4850,15 +4750,6 @@
       },
       {
         "__id__": 154
-      },
-      {
-        "__id__": 155
-      },
-      {
-        "__id__": 156
-      },
-      {
-        "__id__": 157
       }
     ],
     "_prefab": null,
@@ -4895,7 +4786,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 147
+      "__id__": 144
     },
     "_enabled": true,
     "__prefab": null,
@@ -4913,7 +4804,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 147
+      "__id__": 144
     },
     "_enabled": true,
     "__prefab": null,
@@ -4959,7 +4850,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 147
+      "__id__": 144
     },
     "_enabled": true,
     "__prefab": null,
@@ -4981,7 +4872,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 147
+      "__id__": 144
     },
     "_enabled": true,
     "__prefab": null,
@@ -4999,7 +4890,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 147
+      "__id__": 144
     },
     "_enabled": true,
     "__prefab": null,
@@ -5017,7 +4908,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 147
+      "__id__": 144
     },
     "_enabled": true,
     "__prefab": null,
@@ -5035,7 +4926,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 147
+      "__id__": 144
     },
     "_enabled": true,
     "__prefab": null,
@@ -5069,7 +4960,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 147
+      "__id__": 144
     },
     "_enabled": true,
     "__prefab": null,
@@ -5087,7 +4978,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 147
+      "__id__": 144
     },
     "_enabled": true,
     "__prefab": null,
@@ -5105,7 +4996,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 147
+      "__id__": 144
     },
     "_enabled": true,
     "__prefab": null,
@@ -5123,12 +5014,12 @@
     "fileId": "d583ac33-20e7-449c-aff5-ace310cf425b",
     "targetOverrides": [
       {
-        "__id__": 159
+        "__id__": 156
       }
     ],
     "nestedPrefabInstanceRoots": [
       {
-        "__id__": 134
+        "__id__": 131
       }
     ]
   },
@@ -5142,10 +5033,10 @@
       "blackScreen"
     ],
     "target": {
-      "__id__": 134
+      "__id__": 131
     },
     "targetInfo": {
-      "__id__": 160
+      "__id__": 157
     }
   },
   {
@@ -5157,19 +5048,19 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 162
+      "__id__": 159
     },
     "shadows": {
-      "__id__": 163
+      "__id__": 160
     },
     "_skybox": {
-      "__id__": 164
+      "__id__": 161
     },
     "fog": {
-      "__id__": 165
+      "__id__": 162
     },
     "octree": {
-      "__id__": 166
+      "__id__": 163
     }
   },
   {

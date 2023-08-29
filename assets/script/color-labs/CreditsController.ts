@@ -8,7 +8,7 @@ export class CreditsController extends Component {
   }
 
   onClickJellyTwt() {
-    window.open("https://twitter.com/jellyhoshiumi?lang=en");
+    window.open("https://twitter.com/jellyhoshiumi");
   }
 
   onClickPhaseConnect() {
@@ -16,7 +16,7 @@ export class CreditsController extends Component {
   }
 
   onClickPeppy() {
-    window.open("https://twitter.com/mira_peppy?lang=en");
+    window.open("https://twitter.com/mira_peppy");
   }
 
   onClickMagna() {

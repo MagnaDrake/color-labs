@@ -50,7 +50,13 @@ export class TitleScreenUIManager extends Component {
       this.levelSelectorHiddenAnchor.worldPosition
     );
     this.menuObjects.setWorldPosition(this.titleHiddenAnchor.worldPosition);
+    this.creditsLabels.setWorldPosition(
+      this.levelSelectorHiddenAnchor.worldPosition
+    );
     this.blackScreen.toggleVisibility(true);
+    this.howToPlay.setWorldPosition(
+      this.levelSelectorHiddenAnchor.worldPosition
+    );
   }
   start() {
     AudioManager.Instance.play(
@@ -60,8 +66,7 @@ export class TitleScreenUIManager extends Component {
     );
 
     if (!this.fromGameplay) {
-      moveTo(this.jellySprite, this.jellyVisibleAnchor.worldPosition, 1);
-      moveTo(this.menuObjects, this.titleVisibleAnchor.worldPosition, 1);
+      this.showJellyMenu();
     }
     this.blackScreen.toggleVisibility(false);
   }
@@ -71,7 +76,7 @@ export class TitleScreenUIManager extends Component {
       `${getAudioKeyString(AudioKeys.SFXSweep)}-0`
     );
     moveTo(this.jellySprite, this.jellyHiddenAnchor.worldPosition, 1);
-    moveTo(this.menuObjects, this.titleHiddenAnchor.worldPosition, 1);
+    this.hideJellyMenu();
     moveTo(
       this.levelSelector,
       this.levelSelectorVisibleAnchor.worldPosition,
@@ -86,17 +91,20 @@ export class TitleScreenUIManager extends Component {
     AudioManager.Instance.playOneShot(
       `${getAudioKeyString(AudioKeys.SFXSweep)}-1`
     );
-    this.creditsLabels!.active = true;
-    moveTo(this.jellySprite, this.jellyHiddenAnchor.worldPosition, 1);
-    moveTo(this.menuObjects, this.titleHiddenAnchor.worldPosition, 1);
+    moveTo(
+      this.creditsLabels,
+      this.levelSelectorVisibleAnchor.worldPosition,
+      1
+    );
+    this.hideJellyMenu();
   }
 
   onHideCredits() {
     AudioManager.Instance.playOneShot(
       `${getAudioKeyString(AudioKeys.SFXUIClick)}`
     );
-    this.creditsLabels!.active = false;
-    this.closeLevelSelector();
+    moveTo(this.creditsLabels, this.levelSelectorHiddenAnchor.worldPosition, 1);
+    this.showJellyMenu();
   }
 
   onStartGameClick() {
@@ -117,17 +125,34 @@ export class TitleScreenUIManager extends Component {
     AudioManager.Instance.playOneShot(
       `${getAudioKeyString(AudioKeys.SFXSweep)}-1`
     );
-    moveTo(this.jellySprite, this.jellyVisibleAnchor.worldPosition, 1);
-    moveTo(this.menuObjects, this.titleVisibleAnchor.worldPosition, 1);
+    this.showJellyMenu();
     moveTo(this.levelSelector, this.levelSelectorHiddenAnchor.worldPosition, 1);
   }
 
   showHowToPlay() {
-    this.howToPlay.active = true;
+    AudioManager.Instance.playOneShot(
+      `${getAudioKeyString(AudioKeys.SFXUIClick)}`
+    );
+    this.hideJellyMenu();
+    moveTo(this.howToPlay, this.levelSelectorVisibleAnchor.worldPosition, 1);
+  }
+
+  hideJellyMenu() {
+    moveTo(this.jellySprite, this.jellyHiddenAnchor.worldPosition, 1);
+    moveTo(this.menuObjects, this.titleHiddenAnchor.worldPosition, 1);
+  }
+
+  showJellyMenu() {
+    moveTo(this.jellySprite, this.jellyVisibleAnchor.worldPosition, 1);
+    moveTo(this.menuObjects, this.titleVisibleAnchor.worldPosition, 1);
   }
 
   hideHowToPlay() {
-    this.howToPlay.active = false;
+    AudioManager.Instance.playOneShot(
+      `${getAudioKeyString(AudioKeys.SFXUIClick)}`
+    );
+    this.showJellyMenu();
+    moveTo(this.howToPlay, this.levelSelectorHiddenAnchor.worldPosition, 1);
   }
 
   toggleLoadingScreen(value: boolean) {
