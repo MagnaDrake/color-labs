@@ -3,6 +3,7 @@ import { LevelItem } from "./LevelItem";
 import { GameManager } from "./GameManager";
 import { TitleScreenUIManager } from "./TitleScreenUIManager";
 import { AudioKeys, AudioManager, getAudioKeyString } from "./AudioManager";
+import { UserDataManager } from "./UserDataManager";
 const { ccclass, property } = _decorator;
 
 export interface UserSaveData {
@@ -28,13 +29,7 @@ export class LevelSelector extends Component {
   }
 
   generateLevelGrid() {
-    const userData = localStorage.getItem("userData");
-    if (userData) {
-      this.saveData = JSON.parse(userData) as UserSaveData;
-    } else {
-      this.saveData = { completedLevels: [], perfectLevels: [] };
-      localStorage.setItem("userData", JSON.stringify(this.saveData));
-    }
+    this.saveData = UserDataManager.Instance.getUserData();
 
     this.createLevelItems(50);
   }

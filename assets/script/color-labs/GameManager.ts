@@ -19,6 +19,7 @@ import { GameplayUIManager } from "./GameplayUIManager";
 import { TitleScreenUIManager } from "./TitleScreenUIManager";
 import { UserSaveData } from "./LevelSelector";
 import { AudioKeys, AudioManager, getAudioKeyString } from "./AudioManager";
+import { UserDataManager } from "./UserDataManager";
 const { ccclass, property } = _decorator;
 
 export enum GameStates {
@@ -312,7 +313,7 @@ export class GameManager extends Component {
           this.gameplayUIManager.toggleLevelClear(false);
           this.levelIndicator.node.active = false;
           moveTo(this.gameContainer, this.containerAnchor.worldPosition, 0.25);
-        }, 0.5);
+        }, 0.1);
 
         // todo trigger lose window
         break;
@@ -336,21 +337,14 @@ export class GameManager extends Component {
             this.devRecord
           );
           moveTo(this.gameContainer, this.containerAnchor.worldPosition, 0.25);
-        }, 0.5);
+        }, 0.1);
 
         break;
     }
   }
 
   saveWin() {
-    const userData = localStorage.getItem("userData");
-    let saveData;
-    if (userData) {
-      saveData = JSON.parse(userData) as UserSaveData;
-    } else {
-      saveData = { completedLevels: [], perfectLevels: [] };
-    }
-
+    const saveData = UserDataManager.Instance.getUserData();
     if (!saveData.completedLevels.includes(this.levelIndex)) {
       saveData.completedLevels.push(this.levelIndex);
     }
@@ -361,7 +355,7 @@ export class GameManager extends Component {
       }
     }
 
-    localStorage.setItem("userData", JSON.stringify(saveData));
+    UserDataManager.Instance.saveUserData(saveData);
   }
 
   debugVialEndGame() {

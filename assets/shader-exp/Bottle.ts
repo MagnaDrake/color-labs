@@ -314,7 +314,7 @@ export class Bottle extends Component {
       this.isFlipped = false;
     }
 
-    moveTo(this.node, this.slot.defaultSlot.worldPosition, 0.35, () => {
+    moveTo(this.node, this.slot.defaultSlot.worldPosition, 0.25, () => {
       this.gameManager.clearBottleState();
     });
   }

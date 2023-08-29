@@ -5,6 +5,7 @@ import { BlackScreen } from "./BlackScreen";
 import { AudioKeys, AudioManager, getAudioKeyString } from "./AudioManager";
 import { GameManager } from "./GameManager";
 import { UserSaveData } from "./LevelSelector";
+import { UserDataManager } from "./UserDataManager";
 const { ccclass, property } = _decorator;
 
 @ccclass("GameplayUIManager")
@@ -47,16 +48,14 @@ export class GameplayUIManager extends Component {
       const endLevelLabel =
         this.completeAllLevelsButton.getComponentInChildren(Label);
       if (GameManager.Instance.levelIndex >= 49) {
-        const userData = localStorage.getItem("userData");
+        const userData = UserDataManager.Instance.getUserData();
 
         if (userData) {
-          const saveData = JSON.parse(userData) as UserSaveData;
-
-          if (saveData.completedLevels.length < 50) {
+          if (userData.completedLevels.length < 50) {
             endLevelLabel!.string =
               "You have reached the end of the line.\nNow turn around and clear the uncleared levels!";
           } else {
-            if (saveData.perfectLevels.length < 50) {
+            if (userData.perfectLevels.length < 50) {
               endLevelLabel!.string =
                 "You have reached the end of the line.\nYou've cleared all the levels,\nbut have you beaten our records?";
             } else {
