@@ -1,6 +1,7 @@
 import { _decorator, Component, Input, Node } from "cc";
 import { UserSaveData } from "./LevelSelector";
 import { AudioKeys, AudioManager, getAudioKeyString } from "./AudioManager";
+import { TitleScreenUIManager } from "./TitleScreenUIManager";
 const { ccclass, property } = _decorator;
 
 @ccclass("AwardManager")
@@ -10,6 +11,9 @@ export class AwardManager extends Component {
 
   @property(Node)
   image!: Node;
+
+  @property(TitleScreenUIManager)
+  uiManager!: TitleScreenUIManager;
 
   protected onLoad(): void {
     const userData = localStorage.getItem("userData");
@@ -26,6 +30,7 @@ export class AwardManager extends Component {
             getAudioKeyString(AudioKeys.SFXUIClick)
           );
           this.image.active = true;
+          this.uiManager.hideJellyMenu();
         });
 
         this.image.on(Input.EventType.TOUCH_START, () => {
@@ -33,6 +38,7 @@ export class AwardManager extends Component {
             getAudioKeyString(AudioKeys.SFXUIClick)
           );
           this.image.active = false;
+          this.uiManager.showJellyMenu();
         });
       }
     }
