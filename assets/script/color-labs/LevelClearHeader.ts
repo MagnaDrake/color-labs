@@ -21,12 +21,14 @@ export class LevelClearHeader extends Component {
         let tailString = "";
         if (moves > devRecord) {
           tailString = "You can do better!";
+        } else if (moves < devRecord) {
+          tailString = "Amazing!";
         } else {
-          tailString = "Nice work!";
+          tailString = "Good work!";
         }
         secondaryString = `The devs' record is ${devRecord} moves. ${tailString}`;
       } else {
-        secondaryString = "Nice work!";
+        secondaryString = "Good work!";
       }
       this.secondaryLabel.string = secondaryString;
 
@@ -34,10 +36,14 @@ export class LevelClearHeader extends Component {
     } else {
       this.headerLabel.string = "Level Failed...";
       this.primaryLabel.string = `There are no more possible moves.`;
-      this.secondaryLabel.string = "Try again!";
+      let secondaryString = "Nice try!";
+      if (devRecord && devRecord > 0) {
+        if (devRecord - moves <= 4) {
+          secondaryString = "So close!";
+        }
+      }
+
+      this.secondaryLabel.string = secondaryString;
     }
   }
-  start() {}
-
-  update(deltaTime: number) {}
 }
