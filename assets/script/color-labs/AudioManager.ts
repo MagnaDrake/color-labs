@@ -38,6 +38,10 @@ import { Node, AudioSource, AudioClip, director, game, Enum } from "cc";
  */
 
 export class AudioManager {
+  masterVolume = 1;
+  sfxVolume = 1;
+  sfxVolumeRatio = 1;
+
   private static _inst: AudioManager;
   public static get Instance(): AudioManager {
     if (this._inst == null) {
@@ -88,11 +92,11 @@ export class AudioManager {
    */
   playOneShot(sound: AudioClip | string, volume: number = 1.0) {
     if (sound instanceof AudioClip) {
-      this._audioSource.playOneShot(sound, volume);
+      this._audioSource.playOneShot(sound, this.sfxVolume);
     } else {
       const clip = this.audioClips.get(sound);
       if (clip) {
-        this.audioSource.playOneShot(clip, volume);
+        this.audioSource.playOneShot(clip, this.sfxVolume);
       } else {
         console.warn(`Audio Clip of key ${sound} not found`);
       }
@@ -118,13 +122,14 @@ export class AudioManager {
     if (sound instanceof AudioClip) {
       this._audioSource.clip = sound;
       this._audioSource.play();
-      this.audioSource.volume = volume;
+      this.audioSource.volume = this.masterVolume;
     } else {
       const clip = this.audioClips.get(sound);
       if (clip) {
         this._audioSource.clip = clip;
         this.audioSource.play();
         this.audioSource.loop = loop;
+        this.audioSource.volume = this.masterVolume;
       } else {
         console.warn(`Audio Clip of key ${sound} not found`);
       }
@@ -170,5 +175,16 @@ export class AudioManager {
 
   getPersistentNode() {
     return this.node;
+  }
+
+  adjustBGMVolume(value: number) {
+    this.masterVolume = value;
+    this.sfxVolume = this.sfxVolumeRatio / this.masterVolume;
+    this._audioSource.volume = this.masterVolume;
+  }
+
+  adjustSFXVolume(value: number) {
+    this.sfxVolumeRatio = value;
+    this.sfxVolume = this.sfxVolumeRatio / this.masterVolume;
   }
 }

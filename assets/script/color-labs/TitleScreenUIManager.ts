@@ -39,6 +39,9 @@ export class TitleScreenUIManager extends Component {
   @property(Node)
   howToPlay!: Node;
 
+  @property(Node)
+  volumeControl!: Node;
+
   fromGameplay = false;
 
   @property(BlackScreen)
@@ -55,6 +58,10 @@ export class TitleScreenUIManager extends Component {
     );
     this.blackScreen.toggleVisibility(true);
     this.howToPlay.setWorldPosition(
+      this.levelSelectorHiddenAnchor.worldPosition
+    );
+
+    this.volumeControl.setWorldPosition(
       this.levelSelectorHiddenAnchor.worldPosition
     );
   }
@@ -157,6 +164,28 @@ export class TitleScreenUIManager extends Component {
 
   toggleLoadingScreen(value: boolean) {
     this.blackScreen.toggleVisibility(value);
+  }
+
+  showVolumeControl() {
+    AudioManager.Instance.playOneShot(
+      `${getAudioKeyString(AudioKeys.SFXUIClick)}`
+    );
+
+    this.hideJellyMenu();
+    moveTo(
+      this.volumeControl,
+      this.levelSelectorVisibleAnchor.worldPosition,
+      1
+    );
+  }
+
+  hideVolumeControl() {
+    AudioManager.Instance.playOneShot(
+      `${getAudioKeyString(AudioKeys.SFXUIClick)}`
+    );
+
+    this.showJellyMenu();
+    moveTo(this.volumeControl, this.levelSelectorHiddenAnchor.worldPosition, 1);
   }
 
   update(deltaTime: number) {}
