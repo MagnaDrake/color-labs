@@ -29,7 +29,8 @@ export class BottleManager extends Component {
       this.bottleSlotPools.push(child);
 
       //console.log("pool length", this.bottleSlotPools);
-      child.getChildByName("Bottle")?.getComponent(Bottle)?.resetLiquid();
+      const bottle = child.getChildByName("Bottle")?.getComponent(Bottle);
+      bottle?.resetLiquid();
       //console.log("reset liquid", index);
     });
 

@@ -403,6 +403,7 @@ export class GameManager extends Component {
 
   retryLevel() {
     if (this.currentGameState === GameStates.POURING) return;
+    this.bottles.forEach((bottle) => {});
     AudioManager.Instance.playOneShot(getAudioKeyString(AudioKeys.SFXUIClick));
     this.gameplayUIManager.resetUI();
     this.scheduleOnce(() => {

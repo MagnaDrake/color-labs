@@ -12,6 +12,7 @@ import {
   randomRangeInt,
   renderer,
   Sprite,
+  Tween,
   tween,
   Vec3,
   Vec4,
@@ -302,7 +303,6 @@ export class Bottle extends Component {
     const worldPos = this.node.worldPosition;
     this.slot.node.setScale(1, 1, 1);
     this.node.setWorldPosition(worldPos);
-    this.gameManager.clearBottleState();
     if (this.isFlipped) {
       this.shimmer.setPosition(
         new Vec3(
@@ -314,7 +314,9 @@ export class Bottle extends Component {
       this.isFlipped = false;
     }
 
-    moveTo(this.node, this.slot.defaultSlot.worldPosition, 0.5);
+    moveTo(this.node, this.slot.defaultSlot.worldPosition, 0.35, () => {
+      this.gameManager.clearBottleState();
+    });
   }
 
   isFinished() {
