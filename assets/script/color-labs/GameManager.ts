@@ -365,6 +365,8 @@ export class GameManager extends Component {
   }
 
   generateLevel(levelIndex: number) {
+    this.currentSelectedBottle = null;
+    this.targetBottle = null;
     this.moves = 0;
     this.devRecord = 0;
     this.levelIndicator.string = `Level ${levelIndex + 1}`;
@@ -385,6 +387,7 @@ export class GameManager extends Component {
       }
       this.bottles.push(bottleClass!);
       bottleClass?.setColors(bottleData.colors as LiquidColors[]);
+      bottleClass?.resetSlotPosition();
     });
     this.currentGameState = GameStates.IDLE;
     AudioManager.Instance.playOneShot(
@@ -403,7 +406,7 @@ export class GameManager extends Component {
 
   retryLevel() {
     if (this.currentGameState === GameStates.POURING) return;
-    this.bottles.forEach((bottle) => {});
+
     AudioManager.Instance.playOneShot(getAudioKeyString(AudioKeys.SFXUIClick));
     this.gameplayUIManager.resetUI();
     this.scheduleOnce(() => {

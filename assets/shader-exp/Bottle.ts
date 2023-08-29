@@ -319,6 +319,10 @@ export class Bottle extends Component {
     });
   }
 
+  resetSlotPosition() {
+    this.node.setWorldPosition(this.slot.defaultSlot.worldPosition);
+  }
+
   isFinished() {
     if (this.liquidList.length <= 0) return true;
     if (this.liquidList.length < 4 && this.liquidList.length >= 1) return false;
