@@ -364,6 +364,10 @@ export class GameManager extends Component {
     localStorage.setItem("userData", JSON.stringify(saveData));
   }
 
+  debugVialEndGame() {
+    moveTo(this.gameContainer, this.containerAnchor.worldPosition, 0.25);
+  }
+
   generateLevel(levelIndex: number) {
     this.currentSelectedBottle = null;
     this.targetBottle = null;

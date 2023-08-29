@@ -1,9 +1,10 @@
-import { _decorator, Component, Node, Vec3 } from "cc";
+import { _decorator, Component, Label, Node, Vec3 } from "cc";
 import { LevelClearHeader } from "./LevelClearHeader";
 import { moveTo } from "./position";
 import { BlackScreen } from "./BlackScreen";
 import { AudioKeys, AudioManager, getAudioKeyString } from "./AudioManager";
 import { GameManager } from "./GameManager";
+import { UserSaveData } from "./LevelSelector";
 const { ccclass, property } = _decorator;
 
 @ccclass("GameplayUIManager")
@@ -35,11 +36,35 @@ export class GameplayUIManager extends Component {
 
   completeAllLevelsAnchor!: Vec3;
 
+  debugLevelClear() {
+    this.toggleLevelClear(true, 1, 1);
+  }
+
   toggleLevelClear(isWin: boolean, moves = 0, devRecord = 0) {
     moveTo(this.levelClearHeader.node, this.headerAnchor.worldPosition, 0.25);
     this.levelClearHeader.updateText(isWin, moves, devRecord);
     if (isWin) {
+      const endLevelLabel =
+        this.completeAllLevelsButton.getComponentInChildren(Label);
       if (GameManager.Instance.levelIndex >= 49) {
+        const userData = localStorage.getItem("userData");
+
+        if (userData) {
+          const saveData = JSON.parse(userData) as UserSaveData;
+
+          if (saveData.completedLevels.length < 50) {
+            endLevelLabel!.string =
+              "You have reached the end of the line.\nNow turn around and clear the uncleared levels!";
+          } else {
+            if (saveData.perfectLevels.length < 50) {
+              endLevelLabel!.string =
+                "You have reached the end of the line.\nYou've cleared all the levels,\nbut have you beaten our records?";
+            } else {
+              endLevelLabel!.string =
+                "You have cleared all the levels!\nCongratulations! Check the main menu for your prize.";
+            }
+          }
+        }
         moveTo(
           this.completeAllLevelsButton,
           this.completeAllLevelsAnchor,
