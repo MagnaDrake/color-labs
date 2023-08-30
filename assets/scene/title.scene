@@ -21,17 +21,17 @@
         "__id__": 208
       },
       {
-        "__id__": 219
+        "__id__": 220
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 220
+      "__id__": 221
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 223
+      "__id__": 224
     },
     "_id": "d583ac33-20e7-449c-aff5-ace310cf425b"
   },
@@ -6981,6 +6981,9 @@
       },
       {
         "__id__": 218
+      },
+      {
+        "__id__": 219
       }
     ],
     "_prefab": null,
@@ -7241,6 +7244,24 @@
     "_id": "3apTjPZzRBb4pXoltKvdiW"
   },
   {
+    "__type__": "7b938CF4XNFoL48o/39z69m",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 208
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "key": 10,
+    "clips": [
+      {
+        "__uuid__": "271f6eaf-00cc-48ea-88d9-af1cefd7b237",
+        "__expectedType__": "cc.AudioClip"
+      }
+    ],
+    "_id": "f8ilyVmClJdKRXA6cCz2ek"
+  },
+  {
     "__type__": "cc.Node",
     "_name": "UserDataManager",
     "_objFlags": 0,
@@ -7284,7 +7305,7 @@
     "fileId": "d583ac33-20e7-449c-aff5-ace310cf425b",
     "targetOverrides": [
       {
-        "__id__": 221
+        "__id__": 222
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -7306,7 +7327,7 @@
       "__id__": 195
     },
     "targetInfo": {
-      "__id__": 222
+      "__id__": 223
     }
   },
   {
@@ -7318,19 +7339,19 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 224
-    },
-    "shadows": {
       "__id__": 225
     },
-    "_skybox": {
+    "shadows": {
       "__id__": 226
     },
-    "fog": {
+    "_skybox": {
       "__id__": 227
     },
-    "octree": {
+    "fog": {
       "__id__": 228
+    },
+    "octree": {
+      "__id__": 229
     }
   },
   {

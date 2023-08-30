@@ -9,6 +9,7 @@ export enum AudioKeys {
   SFXVialComplete,
   SFXLevelClear,
   SFXLevelFail,
+  SFXFanfare,
 }
 
 export const AudioKeyStrings = [
@@ -22,6 +23,7 @@ export const AudioKeyStrings = [
   "vial-complete",
   "level-clear",
   "levelfail",
+  "fanfare",
 ];
 
 export function getAudioKeyString(key: AudioKeys) {
@@ -178,6 +180,9 @@ export class AudioManager {
   }
 
   adjustBGMVolume(value: number) {
+    if (value <= 0.1) {
+      value = 0.001;
+    }
     this.masterVolume = value;
     this.sfxVolume = this.sfxVolumeRatio / this.masterVolume;
     this._audioSource.volume = this.masterVolume;

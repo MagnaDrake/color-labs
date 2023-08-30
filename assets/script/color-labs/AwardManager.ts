@@ -16,6 +16,8 @@ export class AwardManager extends Component {
   @property(TitleScreenUIManager)
   uiManager!: TitleScreenUIManager;
 
+  revealed = false;
+
   protected onLoad(): void {
     const userData = UserDataManager.Instance.getUserData();
     if (userData) {
@@ -28,6 +30,12 @@ export class AwardManager extends Component {
           );
           this.image.active = true;
           this.uiManager.hideJellyMenu();
+          if (!this.revealed) {
+            AudioManager.Instance.playOneShot(
+              getAudioKeyString(AudioKeys.SFXFanfare)
+            );
+            this.revealed = true;
+          }
         });
 
         this.image.on(Input.EventType.TOUCH_START, () => {

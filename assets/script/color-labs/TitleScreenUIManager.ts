@@ -96,7 +96,7 @@ export class TitleScreenUIManager extends Component {
       `${getAudioKeyString(AudioKeys.SFXUIClick)}`
     );
     AudioManager.Instance.playOneShot(
-      `${getAudioKeyString(AudioKeys.SFXSweep)}-1`
+      `${getAudioKeyString(AudioKeys.SFXSweep)}-0`
     );
     moveTo(
       this.creditsLabels,
@@ -109,6 +109,9 @@ export class TitleScreenUIManager extends Component {
   onHideCredits() {
     AudioManager.Instance.playOneShot(
       `${getAudioKeyString(AudioKeys.SFXUIClick)}`
+    );
+    AudioManager.Instance.playOneShot(
+      `${getAudioKeyString(AudioKeys.SFXSweep)}-1`
     );
     moveTo(this.creditsLabels, this.levelSelectorHiddenAnchor.worldPosition, 1);
     this.showJellyMenu();
@@ -138,6 +141,9 @@ export class TitleScreenUIManager extends Component {
 
   showHowToPlay() {
     AudioManager.Instance.playOneShot(
+      `${getAudioKeyString(AudioKeys.SFXSweep)}-0`
+    );
+    AudioManager.Instance.playOneShot(
       `${getAudioKeyString(AudioKeys.SFXUIClick)}`
     );
     this.hideJellyMenu();
@@ -158,6 +164,9 @@ export class TitleScreenUIManager extends Component {
     AudioManager.Instance.playOneShot(
       `${getAudioKeyString(AudioKeys.SFXUIClick)}`
     );
+    AudioManager.Instance.playOneShot(
+      `${getAudioKeyString(AudioKeys.SFXSweep)}-1`
+    );
     this.showJellyMenu();
     moveTo(this.howToPlay, this.levelSelectorHiddenAnchor.worldPosition, 1);
   }
@@ -167,6 +176,9 @@ export class TitleScreenUIManager extends Component {
   }
 
   showVolumeControl() {
+    AudioManager.Instance.playOneShot(
+      `${getAudioKeyString(AudioKeys.SFXSweep)}-0`
+    );
     AudioManager.Instance.playOneShot(
       `${getAudioKeyString(AudioKeys.SFXUIClick)}`
     );
@@ -183,7 +195,9 @@ export class TitleScreenUIManager extends Component {
     AudioManager.Instance.playOneShot(
       `${getAudioKeyString(AudioKeys.SFXUIClick)}`
     );
-
+    AudioManager.Instance.playOneShot(
+      `${getAudioKeyString(AudioKeys.SFXSweep)}-1`
+    );
     this.showJellyMenu();
     moveTo(this.volumeControl, this.levelSelectorHiddenAnchor.worldPosition, 1);
   }
