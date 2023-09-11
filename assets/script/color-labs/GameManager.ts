@@ -1,5 +1,6 @@
 import {
   _decorator,
+  Button,
   CCInteger,
   Component,
   director,
@@ -407,7 +408,13 @@ export class GameManager extends Component {
 
     AudioManager.Instance.playOneShot(getAudioKeyString(AudioKeys.SFXUIClick));
     this.gameplayUIManager.resetUI();
+    this.gameplayUIManager.retryButton.getComponent(Button)!.interactable =
+      false;
+
     this.scheduleOnce(() => {
+      this.gameplayUIManager.retryButton.getComponent(Button)!.interactable =
+        true;
+
       this.gameContainer.worldPosition = this.containerOgWorldPosition;
       this.generateLevel(this.levelIndex);
     }, 0.25);
@@ -425,6 +432,9 @@ export class GameManager extends Component {
     AudioManager.Instance.playOneShot(
       `${getAudioKeyString(AudioKeys.SFXSweep)}-1`
     );
+    this.gameplayUIManager.backToLevelSelectButton.getComponent(
+      Button
+    )!.interactable = false;
     this.scheduleOnce(() => {
       director.loadScene("title", (e, scene) => {
         const uiManager = scene?.getComponentInChildren(TitleScreenUIManager);
